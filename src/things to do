@@ -2,6 +2,8 @@ start(disable onclick event ternary event setState to update) guess(enable) give
 
 fix the zoom levels to finish the state of the state story react leaf let docs Completed
 
+var map = new L.map('map', { zoomControl: false });
+
 high scores box
 
 map on page Completed

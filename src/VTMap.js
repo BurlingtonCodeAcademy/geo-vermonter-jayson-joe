@@ -9,6 +9,7 @@ class VTMap extends React.Component {
     this.state = {};
   }
 
+
   render() {
     let VTBorder = borderData.geometry.coordinates[0].map((coordSet) => {
       return [coordSet[1], coordSet[0]];
@@ -21,6 +22,7 @@ class VTMap extends React.Component {
           center={[44.0886, -72.7317]}
           zoom={8}
           style={{ height: "600px", width: "600px" }}
+          zoomControl={false}
         >
           <TileLayer
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
@@ -34,3 +36,4 @@ class VTMap extends React.Component {
 }
 
 export default VTMap;
+
