@@ -1,4 +1,5 @@
 import React from "react";
+import { LeafletConsumer } from "react-leaflet";
 
 class Buttons extends React.Component {
   constructor(props) {
@@ -8,7 +9,30 @@ class Buttons extends React.Component {
       disabled: true,
     };
   }
+
+handleClick=(event) => {
+    event.preventDefault()
+
+    this.setState({disabled: false})
+    randomCoords()
+    leafletPip.pointInLayer(point, layer L.GeoJSON)
 }
+
+
+render() {
+    return (
+        <div>
+            <button disabled={!this.state.disabled} onClick={this.handleClick}>START</button>
+            <button disabled={this.state.disabled}>GUESS</button>
+            <button disabled={this.state.disabled}>QUIT</button>
+        </div>
+    )
+}
+
+}
+
+
+
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -26,8 +50,6 @@ function randomCoords() {
 
   return [randomLat, randomLong];
 }
-
-console.log(randomCoords());
 
 
 export default Buttons;

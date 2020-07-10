@@ -1,6 +1,7 @@
 import React from "react";
 import { Map, TileLayer, Polygon } from "react-leaflet";
 import borderData from "./border.js";
+import Buttons from "./Buttons";
 
 class VTMap extends React.Component {
   constructor(props) {
@@ -16,22 +17,27 @@ class VTMap extends React.Component {
     console.log(VTBorder);
 
     return (
-      <div>
-        <Map
-          center={[44.0886, -72.7317]}
-          zoom={7}
-          style={{ height: "600px", width: "600px" }}
-          zoomControl={false}
-          scrollWheelZoom={false}
-          attributionControl={false}
-        >
-          <TileLayer
-            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-            attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-          />
-          <Polygon positions={VTBorder} />
-        </Map>
-      </div>
+      <>
+        <div>
+          <Map
+            center={[44.0886, -72.7317]}
+            zoom={7}
+            style={{ height: "600px", width: "600px" }}
+            zoomControl={false}
+            scrollWheelZoom={false}
+            attributionControl={false}
+          >
+            <TileLayer
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+              attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+            />
+            <Polygon positions={VTBorder} />
+          </Map>
+        </div>
+        <div>
+          <Buttons />
+        </div>
+      </>
     );
   }
 }
