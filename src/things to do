@@ -1,12 +1,13 @@
-start(disable onclick event ternary event setState to update) guess(enable) give up buttons(renable start)
+start(disable onclick event ternary event setState to update) guess(enable) give up buttons(renable start) - jpe working on it
 
-fix the zoom levels to finish the state of the state story react leaf let docs
+DONE - css folder 
+
+DONE - map on page
+
+DONE - fix the zoom levels to finish the state of the state story react leaf let docs
 var map = new L.map('map', { zoomControl: false });
 
 high scores box
-
-map on page
-
 
 north south east west controls
 
@@ -16,7 +17,5 @@ score text field
 
 nav bar containing about info and high scores
 
-random spot function( see guess the numbers game)
-css folder 
-
+random spot function( see guess the numbers game) - jayson working in it
 

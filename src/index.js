@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import VTMap from './VTMap';
+import Buttons from './Buttons';
+
 
 
 
 
 ReactDOM.render(
-  <VTMap/>, 
+  <VTMap />,
   document.getElementById('root')
 )
 
