@@ -1,5 +1,5 @@
 import React from "react";
-import { LeafletConsumer } from "react-leaflet";
+import leafletPip from "@mapbox/leaflet-pip";
 
 class Buttons extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ handleClick=(event) => {
 
     this.setState({disabled: false})
     randomCoords()
-    leafletPip.pointInLayer(point, layer L.GeoJSON)
+    leafletPip.pointInLayer(point, layer, L.GeoJSON)
 }
 
 

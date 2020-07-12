@@ -1,4 +1,4 @@
-start(disable onclick event ternary event setState to update) guess(enable) give up buttons(renable start) - jpe working on it
+Done start(disable onclick event ternary event setState to update) (enable) give up buttons(renable start) -
 
 DONE - css folder 
 
@@ -9,7 +9,7 @@ var map = new L.map('map', { zoomControl: false });
 
 high scores box
 
-north south east west controls
+Done but needs to be integrated north south east west controls
 
 modal box that subtracts 10 when wrong
 
