@@ -1,8 +1,8 @@
 import React from "react";
 import VTMap from "./VTMap";
 import leafletPip from "@mapbox/leaflet-pip";
-import borderData from './border'
-import L from 'leaflet'
+import borderData from "./border";
+import L from "leaflet";
 import { Map } from "react-leaflet";
 
 class Buttons extends React.Component {
@@ -11,18 +11,31 @@ class Buttons extends React.Component {
 
     this.state = {
       disabled: true,
-
+      gameStarted: false,
+      long: "",
+      lat: "",
+      zoom: 7,
+      marker: {},
     };
   }
 
   handleClick = (event) => {
     event.preventDefault();
 
-    this.setState({ disabled: false });
-    let startCoords = randomCoords();
-    this.setState({})
+    this.setState({ 
+        disabled: false,
+        gameStarted: true,
+        zoom: 18,
+        marker: {randomCoords}
+
+    });
+};
+
+guessButton()
+
+    //let startCoords = randomCoords();
+    //this.setState({});
     /*start() -----------this will be created to start the gameflow------------*/
-  };
 
   render() {
     return (
@@ -37,12 +50,17 @@ class Buttons extends React.Component {
   }
 }
 
+/*zoomIn = (evt) => {
+  evt.preventDefault();
+  let point = this.randomCoords();
+};*/
+
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
 function randomCoords() {
-  let map = L.geoJSON(borderData)
+  let map = L.geoJSON(borderData);
   let latMin = 42.730315;
   let latMax = 45.005419;
 
@@ -54,14 +72,12 @@ function randomCoords() {
 
   let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
   while (pipArray.length === 0) {
-      randomLat = getRandomArbitrary(latMin, latMax);
-      randomLong = getRandomArbitrary(longMin, longMax);
+    randomLat = getRandomArbitrary(latMin, latMax);
+    randomLong = getRandomArbitrary(longMin, longMax);
     pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
   }
-  
- 
+
   return [randomLat, randomLong];
 }
-
 
 export default Buttons;
