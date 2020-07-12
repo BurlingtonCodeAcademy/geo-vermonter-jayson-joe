@@ -21,17 +21,17 @@ class Buttons extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
-
+    let zoomCoords = randomCoords()
     this.setState({ 
         disabled: false,
         gameStarted: true,
         zoom: 18,
-        marker: {randomCoords}
-
+        marker: zoomCoords
+        
     });
 };
 
-guessButton()
+//guessButton()
 
     //let startCoords = randomCoords();
     //this.setState({});
@@ -40,11 +40,11 @@ guessButton()
   render() {
     return (
       <div>
-        <button disabled={!this.state.disabled} onClick={this.handleClick}>
+        <button disabled={!this.props.disabled} onClick={this.props.handleClick}>
           START
         </button>
-        <button disabled={this.state.disabled}>GUESS</button>
-        <button disabled={this.state.disabled}>QUIT</button>
+        <button disabled={this.props.disabled}>GUESS</button>
+        <button disabled={this.props.disabled}>QUIT</button>
       </div>
     );
   }
