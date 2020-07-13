@@ -1,50 +1,50 @@
 import React from "react";
 
 class Modals extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.modalDisplay && (
-          <div id="modal" className="modal">
-            <h2> Do You Know Which County You Are In?</h2>
-            <button
-              id="cancelButton"
-              className="button"
-              onClick={this.props.closeModal}
-              closeModal={this.closeModal}
-              modalDisplay={this.props.modalDisplay}
-            >
-              Cancel That
-            </button>
-            <form>
-              <div>
-                <select
-                  class="dropdown"
-                  name="counties"
-                  value={this.props.countyGuess}
-                  onChange={this.props.handleChange}
-                >
-                  <option value="Addison County">Addison</option>
-                  <option value="Bennington County">Bennington</option>
-                  <option value="Caledonia County">Caledonia</option>
-                  <option value="Chittenden County">Chittenden</option>
-                  <option value="Essex County">Essex</option>
-                  <option value="Franklin County">Franklin</option>
-                  <option value="Grand Isle County">Grand Isle</option>
-                  <option value="Lamoille County">Lamoille</option>
-                  <option value="Orange County">Orange</option>
-                  <option value="Orleans County">Orleans</option>
-                  <option value="Rutland County">Rutland</option>
-                  <option value="Washington County">Washington</option>
-                  <option value="Windham County">Windham</option>
-                  <option value="Windsor County">Windsor</option>
-                </select>
-              </div>
-            </form>
-          </div>
-        )}
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				{this.props.modalDisplay && (
+					<div id="modal" className="modal">
+						<h2> Do You Know Which County You Are In?</h2>
+						<button
+							id="cancelButton"
+							className="button"
+							onClick={this.props.closeModal}
+							closeModal={this.closeModal}
+							modalDisplay={this.props.modalDisplay}
+						>
+							Cancel That
+						</button>
+						<form>
+							<div>
+								<select
+									class="dropdown"
+									name="counties"
+									value={this.props.countyGuess}
+									onChange={this.props.handleChange}
+								>
+									<button value="Addison County">Addison</button>
+									<button value="Bennington County">Bennington</button>
+									<button value="Caledonia County">Caledonia</button>
+									<button value="Chittenden County">Chittenden</button>
+									<button value="Essex County">Essex</button>
+									<button value="Franklin County">Franklin</button>
+									<button value="Grand Isle County">Grand Isle</button>
+									<button value="Lamoille County">Lamoille</button>
+									<button value="Orange County">Orange</button>
+									<button value="Orleans County">Orleans</button>
+									<button value="Rutland County">Rutland</button>
+									<button value="Washington County">Washington</button>
+									<button value="Windham County">Windham</button>
+									<button value="Windsor County">Windsor</button>
+								</select>
+							</div>
+						</form>
+					</div>
+				)}
+			</div>
+		);
+	}
 }
 export default Modals;

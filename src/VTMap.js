@@ -5,7 +5,7 @@ import Buttons from "./Buttons";
 import Modals from "./Modals";
 import L from "leaflet";
 import leafletPip from "@mapbox/leaflet-pip";
-import Navigation from "./Navigation"
+import Navigation from "./Navigation";
 
 class VTMap extends React.Component {
   constructor(props) {
@@ -73,30 +73,23 @@ class VTMap extends React.Component {
     );
   }
 }
-
 function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+	return Math.random() * (max - min) + min;
 }
-
 function randomCoords() {
-  let map = L.geoJSON(borderData);
-  let latMin = 42.730315;
-  let latMax = 45.005419;
-
-  let longMin = -73.352182;
-  let longMax = -71.510225;
-
-  let randomLat = getRandomArbitrary(latMin, latMax);
-  let randomLong = getRandomArbitrary(longMin, longMax);
-
-  let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  while (pipArray.length === 0) {
-    randomLat = getRandomArbitrary(latMin, latMax);
-    randomLong = getRandomArbitrary(longMin, longMax);
-    pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  }
-
-  return [randomLat, randomLong];
+	let map = L.geoJSON(borderData);
+	let latMin = 42.730315;
+	let latMax = 45.005419;
+	let longMin = -73.352182;
+	let longMax = -71.510225;
+	let randomLat = getRandomArbitrary(latMin, latMax);
+	let randomLong = getRandomArbitrary(longMin, longMax);
+	let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
+	while (pipArray.length === 0) {
+		randomLat = getRandomArbitrary(latMin, latMax);
+		randomLong = getRandomArbitrary(longMin, longMax);
+		pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
+	}
+	return [randomLat, randomLong];
 }
-
 export default VTMap;
