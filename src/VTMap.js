@@ -70,6 +70,8 @@ class VTMap extends React.Component {
           handleNorthClick = {this.handleNorthClick}
           />
         </div>
+        <div>
+        </div>
       </>
     );
   }

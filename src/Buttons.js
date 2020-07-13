@@ -16,6 +16,7 @@ class Buttons extends React.Component {
       lat: "",
       zoom: 7,
       marker: {},
+      modalOpen: false,
     };
   }
 
@@ -28,15 +29,6 @@ class Buttons extends React.Component {
       gameStarted: true,
       zoom: 18,
       marker: zoomCoords,
-    });
-  };
-
-  handleNorthClick = (event) => {
-    event.preventDefault();
-
-    this.setState({
-      disabled: false,
-      gameStarted: true,
     });
   };
 
@@ -54,10 +46,9 @@ class Buttons extends React.Component {
     this.setState({
       gameStarted: false,
       zoom: 7,
+      modalOpen: true,
     });
   };
-
-  /*start() -----------this will be created to start the gameflow------------*/
 
   render() {
     return (

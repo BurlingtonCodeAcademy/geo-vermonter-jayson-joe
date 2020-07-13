@@ -28,12 +28,10 @@ class Navigation extends React.Component {
   handleNorthClick = (event) => {
     event.preventDefault();
 
-    let northCoords = randomCoords()
     this.setState({
       disabled: false,
       gameStarted: true,
       zoom: 18,
-      marker: northCoords,
     });
   };
 
@@ -47,38 +45,5 @@ class Navigation extends React.Component {
     </div>
     )}
 }
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function randomCoords() {
-  let map = L.geoJSON(borderData);
-  let latMin = 42.730315;
-  let latMax = 45.005419;
-
-  let longMin = -73.352182;
-  let longMax = -71.510225;
-
-  let randomLat = getRandomArbitrary(latMin, latMax);
-  let randomLong = getRandomArbitrary(longMin, longMax);
-
-  let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  while (pipArray.length === 0) {
-    randomLat = getRandomArbitrary(latMin, latMax);
-    randomLong = getRandomArbitrary(longMin, longMax);
-    pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  }
-
-  return [randomLat, randomLong];
-}
-/*function northCoords(lat, long) {
-  let lat = (randomLat);
-  let long = (randomLong + 1);
-}*/
-
-
-
-
 
 export default Navigation;
