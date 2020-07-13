@@ -1,7 +1,25 @@
 import React from "react";
 
 class Modals extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			modalDisplayed: false,
+		};
+	}
+
+	toggleModal = (evt) => {
+		evt.preventDefault();
+
+		this.setState((prevState) => {
+			return { modalDisplayed: !prevState.modalDisplayed };
+		});
+	};
+
 	render() {
+		
+
 		return (
 			<div>
 				{this.props.modalDisplay && (
@@ -14,7 +32,7 @@ class Modals extends React.Component {
 							closeModal={this.closeModal}
 							modalDisplay={this.props.modalDisplay}
 						>
-							Cancel That
+							Cancel
 						</button>
 						<form>
 							<div>
@@ -47,4 +65,5 @@ class Modals extends React.Component {
 		);
 	}
 }
+
 export default Modals;

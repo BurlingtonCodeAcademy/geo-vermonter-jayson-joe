@@ -2,15 +2,15 @@ import React from "react";
 import leafletPip from "@mapbox/leaflet-pip";
 import borderData from "./border";
 import L from "leaflet";
-import Buttons from "./Buttons"
 
 class Navigation extends React.Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
 
     this.state = {
       disabled: true,
-      gameStarted: false,
+      gameStarted: true,
+      direction: "",
     };
   }
 

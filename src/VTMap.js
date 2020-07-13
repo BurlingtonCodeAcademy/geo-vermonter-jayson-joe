@@ -2,14 +2,14 @@ import React from "react";
 import { Map, TileLayer, Polygon } from "react-leaflet";
 import borderData from "./border";
 import Buttons from "./Buttons";
-//import Modals from "./Modals";
+import Modals from "./Modals";
 import L from "leaflet";
 import leafletPip from "@mapbox/leaflet-pip";
 import Navigation from "./Navigation";
 
 class VTMap extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
     this.state = {
       center: [44.0886, -72.7317],
@@ -133,3 +133,4 @@ function randomCoords() {
   return [randomLat, randomLong];
 }
 export default VTMap;
+//`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=geojson`
