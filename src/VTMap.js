@@ -2,8 +2,7 @@ import React from "react";
 import { Map, TileLayer, Polygon } from "react-leaflet";
 import borderData from "./border.js";
 import Buttons from "./Buttons";
-import Modals from "./Modals";
-import L from "leaflet";
+/*import Modals from "./Modals";*/
 import leafletPip from "@mapbox/leaflet-pip";
 
 class VTMap extends React.Component {
@@ -71,6 +70,7 @@ function getRandomArbitrary(min, max) {
 }
 
 function randomCoords() {
+
   let map = L.geoJSON(borderData);
   let latMin = 42.730315;
   let latMax = 45.005419;
