@@ -18,19 +18,53 @@ class VTMap extends React.Component {
       zoomControl: false,
       scrollWheelZoom: false,
       attributionControl: false,
-      disabled: true
+      disabled: true,
     };
   }
   handleClick = (event) => {
     event.preventDefault();
-    let zoomCoords = randomCoords()
+
     this.setState({
       disabled: false,
       gameStarted: true,
       zoom: 18,
-      center: zoomCoords,
     });
   };
+
+  handleQuitButton = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      gameStarted: false,
+      zoom: 7,
+    });
+  };
+
+  getCurrentLoc = (event) => {
+    let zoomCoords = randomCoords();
+    this.handleClick(event);
+    let lat = zoomCoords[0];
+    let long = zoomCoords[1];
+    let request = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${long}&format=geojson`;
+    this.setState({
+      center: zoomCoords,
+    });
+
+    return fetch(request)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        let locInfo = response.features[0].properties.address;
+        let currentTown =
+          locInfo.town || locInfo.city || locInfo.village || locInfo.hamlet;
+        let currentCounty = locInfo.county;
+        this.setState ({
+          town: currentTown,
+          county: currentCounty
+        })
+      });
+  };
+
   render() {
     let VTBorder = borderData.geometry.coordinates[0].map((coordSet) => {
       return [coordSet[1], coordSet[0]];
@@ -41,8 +75,8 @@ class VTMap extends React.Component {
       <>
         <div>
           <Map
-            center= {this.state.center}
-            zoom= {this.state.zoom}
+            center={this.state.center}
+            zoom={this.state.zoom}
             style={this.state.style}
             zoomControl={this.state.zoomControl}
             scrollWheelZoom={this.state.scrollWheelZoom}
@@ -57,42 +91,45 @@ class VTMap extends React.Component {
         </div>
         <div>
           <Buttons
-           disabled = {this.state.disabled}
-           handleClick = {this.handleClick}
-           guessButton = {this.state.guessButton}
-           quitButton = {this.state.quitButton}
-           />
-        </div>
-        <div>
-          <Navigation 
-          disabled = {this.state.disabled}
-          handleClick = {this.handleClick}
-          handleNorthClick = {this.handleNorthClick}
+            disabled={this.state.disabled}
+            handleClick={this.getCurrentLoc}
+            guessButton={this.state.guessButton}
+            quitButton={this.state.quitButton}
+            randomLat={this.state.center[0]}
+            randomLong={this.state.center[1]}
+            currentTown={this.state.town}
+            currentCounty={this.state.county}
           />
         </div>
         <div>
+          <Navigation
+            disabled={this.state.disabled}
+            handleClick={this.handleClick}
+            handleNorthClick={this.handleNorthClick}
+          />
         </div>
+        <div></div>
       </>
     );
   }
 }
 function getRandomArbitrary(min, max) {
-	return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min;
 }
 function randomCoords() {
-	let map = L.geoJSON(borderData);
-	let latMin = 42.730315;
-	let latMax = 45.005419;
-	let longMin = -73.352182;
-	let longMax = -71.510225;
-	let randomLat = getRandomArbitrary(latMin, latMax);
-	let randomLong = getRandomArbitrary(longMin, longMax);
-	let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-	while (pipArray.length === 0) {
-		randomLat = getRandomArbitrary(latMin, latMax);
-		randomLong = getRandomArbitrary(longMin, longMax);
-		pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-	}
-	return [randomLat, randomLong];
+  let map = L.geoJSON(borderData);
+  let latMin = 42.730315;
+  let latMax = 45.005419;
+  let longMin = -73.352182;
+  let longMax = -71.510225;
+  let randomLat = getRandomArbitrary(latMin, latMax);
+  let randomLong = getRandomArbitrary(longMin, longMax);
+  let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
+  while (pipArray.length === 0) {
+    randomLat = getRandomArbitrary(latMin, latMax);
+    randomLong = getRandomArbitrary(longMin, longMax);
+    pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
+  }
+  return [randomLat, randomLong];
 }
 export default VTMap;

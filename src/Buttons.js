@@ -21,14 +21,8 @@ class Buttons extends React.Component {
   }
 
   handleClick = (event) => {
-    event.preventDefault();
-
-    let zoomCoords = randomCoords();
     this.setState({
-      disabled: false,
       gameStarted: true,
-      zoom: 18,
-      marker: zoomCoords,
     });
   };
 
@@ -37,6 +31,7 @@ class Buttons extends React.Component {
 
     this.setState({
       disabled: false,
+      gameStarted: true
     });
   };
 
@@ -50,12 +45,20 @@ class Buttons extends React.Component {
     });
   };
 
+handleModalOpen = () => {
+
+}
+
+
+
   render() {
     return (
       <div className="Buttons">
         <button
           disabled={!this.props.disabled}
-          onClick={this.props.handleClick}
+          onClick={(event) => {
+            this.props.handleClick(event)
+          this.handleClick()}}
         >
           START
         </button>
@@ -67,16 +70,23 @@ class Buttons extends React.Component {
         </button>
         <button
           disabled={this.props.disabled}
-          onClick={this.props.handleQuitButton}
+          onClick={this.handleQuitButton}
         >
           QUIT
         </button>
+      
+        <p>Town: {this.state.gameStarted ? "?" : this.props.currentTown} </p>
+        <p>County: {this.state.gameStarted ? "?" : this.props.currentCounty} </p> 
+        <p>Lattitude: {this.state.gameStarted ? "?" : this.props.randomLat} </p>
+        <p>Longitude: {this.state.gameStarted ? "?": this.props.randomLong} </p>
       </div>
     );
   }
 }
+  
+export default Buttons;
 
-function getRandomArbitrary(min, max) {
+/*function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
@@ -99,8 +109,19 @@ function randomCoords() {
   }
 
   return [randomLat, randomLong];
+}*/
+
+/*class quitButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleQuitButton
+  }
 }
 
-function guessButton() {}
-
-export default Buttons;
+function quitButton(props) {
+  return (
+    <button onClick={props.onClick}>
+    Quit
+    </button>
+  )
+}*/
