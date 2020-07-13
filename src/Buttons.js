@@ -31,6 +31,15 @@ class Buttons extends React.Component {
     });
   };
 
+  handleNorthClick = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      disabled: false,
+      gameStarted: true,
+    });
+  };
+
   handleGuessButton = (event) => {
     event.preventDefault();
 
@@ -53,13 +62,22 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className="Buttons">
-        <button disabled={!this.props.disabled} onClick={this.props.handleClick}>
+        <button
+          disabled={!this.props.disabled}
+          onClick={this.props.handleClick}
+        >
           START
         </button>
-        <button disabled={this.props.disabled} onClick={this.props.handleGuessButton}>
+        <button
+          disabled={this.props.disabled}
+          onClick={this.props.handleGuessButton}
+        >
           GUESS
         </button>
-        <button disabled={this.props.disabled} onClick={this.props.handleQuitButton}>
+        <button
+          disabled={this.props.disabled}
+          onClick={this.props.handleQuitButton}
+        >
           QUIT
         </button>
       </div>
