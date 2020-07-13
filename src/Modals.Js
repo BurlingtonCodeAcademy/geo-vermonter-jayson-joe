@@ -8,6 +8,7 @@ class Modals extends React.Component {
 			modalDisplayed: false,
 		};
 	}
+	/* Toggles Modal*/
 
 	toggleModal = (evt) => {
 		evt.preventDefault();
@@ -16,10 +17,8 @@ class Modals extends React.Component {
 			return { modalDisplayed: !prevState.modalDisplayed };
 		});
 	};
-
+	/* Display's Modal with County Names */
 	render() {
-		
-
 		return (
 			<div>
 				{this.props.modalDisplay && (

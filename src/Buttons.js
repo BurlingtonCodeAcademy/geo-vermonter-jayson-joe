@@ -6,84 +6,82 @@ import L from "leaflet";
 import { Map } from "react-leaflet";
 
 class Buttons extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      disabled: true,
-      gameStarted: false,
-      long: "",
-      lat: "",
-      zoom: 7,
-      marker: {},
-      modalOpen: false,
-    };
-  }
+		this.state = {
+			disabled: true,
+			gameStarted: false,
+			long: "",
+			lat: "",
+			zoom: 7,
+			marker: {},
+			modalOpen: false,
+		};
+	}
 
-  handleClick = (event) => {
-    this.setState({
-      gameStarted: true,
-    });
-  };
+	handleClick = (event) => {
+		this.setState({
+			gameStarted: true,
+		});
+	};
 
-  handleGuessButton = (event) => {
-    event.preventDefault();
+	handleGuessButton = (event) => {
+		event.preventDefault();
 
-    this.setState({
-      disabled: false,
-      gameStarted: true
-    });
-  };
+		this.setState({
+			disabled: false,
+			gameStarted: true,
+		});
+	};
 
-  handleQuitButton = (event) => {
-    event.preventDefault();
+	handleQuitButton = (event) => {
+		event.preventDefault();
 
-    this.setState({
-      gameStarted: false,
-      zoom: 7,
-      modalOpen: true,
-    });
-  };
+		this.setState({
+			gameStarted: false,
+			zoom: 7,
+			modalOpen: true,
+		});
+	};
 
-handleModalOpen = () => {
+	handleModalOpen = () => {};
 
+	render() {
+		return (
+			<div className="Buttons">
+				<button
+					disabled={!this.props.disabled}
+					onClick={(event) => {
+						this.props.handleClick(event);
+						this.handleClick();
+					}}
+				>
+					START
+				</button>
+				<button
+					disabled={this.props.disabled}
+					onClick={this.props.handleGuessButton}
+				>
+					GUESS
+				</button>
+				<button disabled={this.props.disabled} onClick={this.handleQuitButton}>
+					QUIT
+				</button>
+
+				<p>Town: {this.state.gameStarted ? "?" : this.props.currentTown} </p>
+				<p>
+					County: {this.state.gameStarted ? "?" : this.props.currentCounty}{" "}
+				</p>
+				<p>Lattitude: {this.state.gameStarted ? "?" : this.props.randomLat} </p>
+				<p>
+					Longitude: {this.state.gameStarted ? "?" : this.props.randomLong}{" "}
+				</p>
+			</div>
+		);
+	}
 }
 
-
-
-  render() {
-    return (
-      <div className="Buttons">
-        <button
-          disabled={!this.props.disabled}
-          onClick={(event) => {
-            this.props.handleClick(event)
-          this.handleClick()}}
-        >
-          START
-        </button>
-        <button
-          disabled={this.props.disabled}
-          onClick={this.props.handleGuessButton}
-        >
-          GUESS
-        </button>
-        <button
-          disabled={this.props.disabled}
-          onClick={this.handleQuitButton}
-        >
-          QUIT
-        </button>
-      
-        <p>Town: {this.state.gameStarted ? "?" : this.props.currentTown} </p>
-        <p>County: {this.state.gameStarted ? "?" : this.props.currentCounty} </p> 
-        <p>Lattitude: {this.state.gameStarted ? "?" : this.props.randomLat} </p>
-        <p>Longitude: {this.state.gameStarted ? "?": this.props.randomLong} </p>
-      </div>
-    );
-  }
-}
-  
 export default Buttons;
 
 /*function getRandomArbitrary(min, max) {

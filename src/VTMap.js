@@ -6,7 +6,7 @@ import Modals from "./Modals";
 import L from "leaflet";
 import leafletPip from "@mapbox/leaflet-pip";
 import Navigation from "./Navigation";
-
+/* Game Start Coordinates*/
 class VTMap extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,6 +21,7 @@ class VTMap extends React.Component {
       disabled: true,
     };
   }
+  /*Click Handler for Game Start*/
   handleClick = (event) => {
     event.preventDefault();
 
@@ -30,7 +31,7 @@ class VTMap extends React.Component {
       zoom: 18,
     });
   };
-
+/* Quit Button Handler*/
   handleQuitButton = (event) => {
     event.preventDefault();
 
@@ -39,7 +40,7 @@ class VTMap extends React.Component {
       zoom: 7,
     });
   };
-
+ /* Fetches Coordinates for Guess*/
   getCurrentLoc = (event) => {
     let zoomCoords = randomCoords();
     this.handleClick(event);
@@ -64,7 +65,8 @@ class VTMap extends React.Component {
         })
       });
   };
-
+ 
+  /* Renders Map and Handles Zoom Functions*/
   render() {
     let VTBorder = borderData.geometry.coordinates[0].map((coordSet) => {
       return [coordSet[1], coordSet[0]];
@@ -113,6 +115,7 @@ class VTMap extends React.Component {
     );
   }
 }
+/* Gets Random Location */
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
