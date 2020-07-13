@@ -20,21 +20,23 @@ class Buttons extends React.Component {
     };
   }
 
+  //---------Handles click event-------------//
   handleClick = (event) => {
     this.setState({
       gameStarted: true,
     });
   };
 
+  //---------Handles event after guess button is clicked-------------//
   handleGuessButton = (event) => {
     event.preventDefault();
 
     this.setState({
-      disabled: false,
       gameStarted: true
     });
   };
 
+  //---------Handles event after quit button is clicked-------------//
   handleQuitButton = (event) => {
     event.preventDefault();
 
@@ -48,8 +50,6 @@ class Buttons extends React.Component {
 handleModalOpen = () => {
 
 }
-
-
 
   render() {
     return (
@@ -79,49 +79,10 @@ handleModalOpen = () => {
         <p>County: {this.state.gameStarted ? "?" : this.props.currentCounty} </p> 
         <p>Lattitude: {this.state.gameStarted ? "?" : this.props.randomLat} </p>
         <p>Longitude: {this.state.gameStarted ? "?": this.props.randomLong} </p>
+
       </div>
     );
   }
 }
   
 export default Buttons;
-
-/*function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function randomCoords() {
-  let map = L.geoJSON(borderData);
-  let latMin = 42.730315;
-  let latMax = 45.005419;
-
-  let longMin = -73.352182;
-  let longMax = -71.510225;
-
-  let randomLat = getRandomArbitrary(latMin, latMax);
-  let randomLong = getRandomArbitrary(longMin, longMax);
-
-  let pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  while (pipArray.length === 0) {
-    randomLat = getRandomArbitrary(latMin, latMax);
-    randomLong = getRandomArbitrary(longMin, longMax);
-    pipArray = leafletPip.pointInLayer([randomLong, randomLat], map);
-  }
-
-  return [randomLat, randomLong];
-}*/
-
-/*class quitButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleQuitButton
-  }
-}
-
-function quitButton(props) {
-  return (
-    <button onClick={props.onClick}>
-    Quit
-    </button>
-  )
-}*/

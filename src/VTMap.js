@@ -8,8 +8,8 @@ import leafletPip from "@mapbox/leaflet-pip";
 import Navigation from "./Navigation";
 
 class VTMap extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
     this.state = {
       center: [44.0886, -72.7317],
@@ -58,10 +58,10 @@ class VTMap extends React.Component {
         let currentTown =
           locInfo.town || locInfo.city || locInfo.village || locInfo.hamlet;
         let currentCounty = locInfo.county;
-        this.setState ({
+        this.setState({
           town: currentTown,
-          county: currentCounty
-        })
+          county: currentCounty,
+        });
       });
   };
 
@@ -133,4 +133,3 @@ function randomCoords() {
   return [randomLat, randomLong];
 }
 export default VTMap;
-//`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=geojson`
