@@ -16,6 +16,7 @@ class Buttons extends React.Component {
       lat: "",
       zoom: 7,
       marker: {},
+      modalOpen: false,
     };
   }
 
@@ -45,21 +46,29 @@ class Buttons extends React.Component {
     this.setState({
       gameStarted: false,
       zoom: 7,
+      modalOpen: true,
     });
   };
-
-  /*start() -----------this will be created to start the gameflow------------*/
 
   render() {
     return (
       <div className="Buttons">
-        <button disabled={!this.props.disabled} onClick={this.props.handleClick}>
+        <button
+          disabled={!this.props.disabled}
+          onClick={this.props.handleClick}
+        >
           START
         </button>
-        <button disabled={this.props.disabled} onClick={this.props.handleGuessButton}>
+        <button
+          disabled={this.props.disabled}
+          onClick={this.props.handleGuessButton}
+        >
           GUESS
         </button>
-        <button disabled={this.props.disabled} onClick={this.props.handleQuitButton}>
+        <button
+          disabled={this.props.disabled}
+          onClick={this.props.handleQuitButton}
+        >
           QUIT
         </button>
       </div>

@@ -14,9 +14,36 @@ class Navigation extends React.Component {
     };
   }
 
+  handleClick = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      disabled: false,
+      gameStarted: true
+    });
+  };
+
+  
+
+  handleNorthClick = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      disabled: false,
+      gameStarted: true,
+      zoom: 18,
+    });
+  };
+
   render() {
-    return <div className="Navigation"></div>;
-  }
+    return (
+    <div id="Navigation">
+      <button disabled={this.props.disabled} onClick={this.handleNorthClick}>North</button>
+      <button disabled={this.props.disabled} onClick={!this.props.handleClick}>South</button>
+      <button disabled={this.props.disabled} onClick={!this.props.handleClick}>East</button>
+      <button disabled={this.props.disabled} onClick={!this.props.handleClick}>West</button>
+    </div>
+    )}
 }
 
 export default Navigation;

@@ -37,41 +37,44 @@ class VTMap extends React.Component {
 		});
 		console.log(VTBorder);
 
-		return (
-			<>
-				<div>
-					<Map
-						center={this.state.center}
-						zoom={this.state.zoom}
-						style={this.state.style}
-						zoomControl={this.state.zoomControl}
-						scrollWheelZoom={this.state.scrollWheelZoom}
-						attributionControl={this.state.attributionControl}
-					>
-						<TileLayer
-							url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-							attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-						/>
-						<Polygon positions={VTBorder} />
-					</Map>
-				</div>
-				<div>
-					<Buttons
-						disabled={this.state.disabled}
-						handleClick={this.handleClick}
-						guessButton={this.state.guessButton}
-						quitButton={this.state.quitButton}
-					/>
-				</div>
-				<div>
-					<Navigation
-						disabled={this.state.disabled}
-						handleClick={this.handleClick}
-					/>
-				</div>
-			</>
-		);
-	}
+    return (
+      <>
+        <div>
+          <Map
+            center= {this.state.center}
+            zoom= {this.state.zoom}
+            style={this.state.style}
+            zoomControl={this.state.zoomControl}
+            scrollWheelZoom={this.state.scrollWheelZoom}
+            attributionControl={this.state.attributionControl}
+          >
+            <TileLayer
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+              attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+            />
+            <Polygon positions={VTBorder} />
+          </Map>
+        </div>
+        <div>
+          <Buttons
+           disabled = {this.state.disabled}
+           handleClick = {this.handleClick}
+           guessButton = {this.state.guessButton}
+           quitButton = {this.state.quitButton}
+           />
+        </div>
+        <div>
+          <Navigation 
+          disabled = {this.state.disabled}
+          handleClick = {this.handleClick}
+          handleNorthClick = {this.handleNorthClick}
+          />
+        </div>
+        <div>
+        </div>
+      </>
+    );
+  }
 }
 function getRandomArbitrary(min, max) {
 	return Math.random() * (max - min) + min;
