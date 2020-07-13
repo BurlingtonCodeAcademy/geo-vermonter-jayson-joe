@@ -59,11 +59,16 @@ class VTMap extends React.Component {
           <Buttons
            disabled = {this.state.disabled}
            handleClick = {this.handleClick}
-           guessButton = {this.guessButton}
-           quitButton = {this.quitButton}
+           guessButton = {this.state.guessButton}
+           quitButton = {this.state.quitButton}
            />
         </div>
-        <div></div>
+        <div>
+          <Navigation 
+          disabled = {this.state.disabled}
+          handleClick = {this.handleClick}
+          />
+        </div>
       </>
     );
   }

@@ -21,6 +21,7 @@ class Buttons extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
+
     let zoomCoords = randomCoords();
     this.setState({
       disabled: false,
@@ -30,16 +31,15 @@ class Buttons extends React.Component {
     });
   };
 
-  guessButton = (click) => {
-    click.preventDefault();
+  handleGuessButton = (event) => {
+    event.preventDefault();
 
     this.setState({
-      guessButton: true,
       disabled: false,
     });
   };
 
-  quitButton = (event) => {
+  handleQuitButton = (event) => {
     event.preventDefault();
 
     this.setState({
@@ -53,16 +53,13 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className="Buttons">
-        <button
-          disabled={!this.props.disabled}
-          onClick={this.props.handleClick}
-        >
+        <button disabled={!this.props.disabled} onClick={this.props.handleClick}>
           START
         </button>
-        <button disabled={this.props.disabled} onClick={this.guessButton}>
+        <button disabled={this.props.disabled} onClick={this.props.handleGuessButton}>
           GUESS
         </button>
-        <button disabled={this.props.disabled} onClick={this.quitButton}>
+        <button disabled={this.props.disabled} onClick={this.props.handleQuitButton}>
           QUIT
         </button>
       </div>
@@ -95,8 +92,6 @@ function randomCoords() {
   return [randomLat, randomLong];
 }
 
-/*function guessButton() {
-  let 
-}*/
+function guessButton() {}
 
 export default Buttons;
