@@ -21,39 +21,54 @@ class Buttons extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
-    let zoomCoords = randomCoords()
-    this.setState({ 
-        disabled: false,
-        gameStarted: true,
-        zoom: 18,
-        marker: zoomCoords
-        
+    let zoomCoords = randomCoords();
+    this.setState({
+      disabled: false,
+      gameStarted: true,
+      zoom: 18,
+      marker: zoomCoords,
     });
-};
+  };
 
-//guessButton()
+  guessButton = (click) => {
+    click.preventDefault();
 
-    //let startCoords = randomCoords();
-    //this.setState({});
-    /*start() -----------this will be created to start the gameflow------------*/
+    this.setState({
+      guessButton: true,
+      disabled: false,
+    });
+  };
+
+  quitButton = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      gameStarted: false,
+      zoom: 7,
+    });
+  };
+
+  /*start() -----------this will be created to start the gameflow------------*/
 
   render() {
     return (
-      <div>
-        <button disabled={!this.props.disabled} onClick={this.props.handleClick}>
+      <div className="Buttons">
+        <button
+          disabled={!this.props.disabled}
+          onClick={this.props.handleClick}
+        >
           START
         </button>
-        <button disabled={this.props.disabled}>GUESS</button>
-        <button disabled={this.props.disabled}>QUIT</button>
+        <button disabled={this.props.disabled} onClick={this.guessButton}>
+          GUESS
+        </button>
+        <button disabled={this.props.disabled} onClick={this.quitButton}>
+          QUIT
+        </button>
       </div>
     );
   }
 }
-
-/*zoomIn = (evt) => {
-  evt.preventDefault();
-  let point = this.randomCoords();
-};*/
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -79,5 +94,9 @@ function randomCoords() {
 
   return [randomLat, randomLong];
 }
+
+/*function guessButton() {
+  let 
+}*/
 
 export default Buttons;

@@ -1,9 +1,10 @@
 import React from "react";
 import { Map, TileLayer, Polygon } from "react-leaflet";
-import borderData from "./border.js";
+import borderData from "./border";
 import Buttons from "./Buttons";
 /*import Modals from "./Modals";*/
 import leafletPip from "@mapbox/leaflet-pip";
+import Navigation from "./Navigation"
 
 class VTMap extends React.Component {
   constructor(props) {
@@ -57,6 +58,8 @@ class VTMap extends React.Component {
           <Buttons
            disabled = {this.state.disabled}
            handleClick = {this.handleClick}
+           guessButton = {this.guessButton}
+           quitButton = {this.quitButton}
            />
         </div>
         <div></div>
