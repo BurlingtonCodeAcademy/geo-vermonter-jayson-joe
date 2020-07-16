@@ -1,0 +1,21 @@
+Done start(disable onclick event ternary event setState to update) (enable) give up buttons(renable start) -
+
+DONE - css folder 
+
+DONE - map on page
+
+DONE - fix the zoom levels to finish the state of the state story react leaf let docs
+var map = new L.map('map', { zoomControl: false });
+
+high scores box
+
+Done but needs to be integrated north south east west controls
+
+modal box that subtracts 10 when wrong
+
+score text field
+
+nav bar containing about info and high scores
+
+DONE - random spot function( see guess the numbers game)
+
